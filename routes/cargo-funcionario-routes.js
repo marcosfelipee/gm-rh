@@ -8,9 +8,9 @@ route.get('/', async (req, res) => {
   try {
     const cargos = await Cargo.find();
 
-    // for(let cargo of cargos) {
-    //   cargo.funcionarios = await Funcionario.findById(cargo.funcionario_id);
-    // }
+    for(let cargo of cargos) {
+      cargo.funcionarios = await Funcionario.findById(cargo.funcionario_id);
+    }
 
     res.status(200).json({ cargos });
   } catch(err) {

@@ -18,7 +18,10 @@ var funcionarioSchema = new Schema({
     cidade: String,
     estado: String,
     dtAdmissao: String,
-    cargo: String
+    cargo: {
+        type: Schema.Types.ObjectId,
+        ref: "Cargo",
+      },
 });
 
 module.exports = moongoose.model('Funcionário', funcionarioSchema);

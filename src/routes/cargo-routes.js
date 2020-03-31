@@ -5,7 +5,7 @@ const route = Router();
 
 route.get("/", async (req, res) => {
   try {
-    const cargos = await Cargo.find();
+    const cargos = await Cargo.find().populate('Funcionários');
 
     return res.status(200).json({ cargos })
   } catch(err) {

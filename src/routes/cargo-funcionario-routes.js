@@ -21,8 +21,10 @@ route.get('/', async (req, res) => {
 });
 
 route.get('/:id', async (req, res) => {
+  const { id } = req.query;
+
   try {
-    const cargo = await Cargo.findById(id).populate('Funcionários');
+    const cargo = await Cargo.findById(id).populate('Funcionarios');
 
     res.status(200).json({ cargo });
   } catch(err) {

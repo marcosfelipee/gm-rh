@@ -2,6 +2,7 @@ const express = require('express')
 var router = express.Router(); //interceptação das rotas
 
 var Funcionario = require("../app/models/funcionario");
+var Cargo = require("../app/models/cargo");
 
 router.post("/", function (req, res) {
     var func = new Funcionario();
@@ -30,16 +31,27 @@ router.post("/", function (req, res) {
 
 });
 
-router.get("/", function (req, res) {
-    Funcionario.find(function (err, funcs) {
-        if (err)
-            res.send(err);
+router.get("/", async function(req, res) {
+  const funcionarios = await Funcionario.find().populate('cargos');
 
-        res.status(200).json({
-            message: 'Funcionários retornados',
-            funcionario: funcs
-        });
-    });
+  for (let funcionario of funcionarios) {
+    if (funcionario.cargo) {
+      const id = funcionario.cargo;
+      funcionario.cargo = await Cargo.findById(id);
+    }
+  }
+
+  res.json({ funcionarios });
+  
+  // const response = await Funcionario.find(function (err, funcs) {
+  //       if (err)
+  //           res.send(err);
+
+  //       res.status(200).json({
+  //           message: 'Funcionários retornados',
+  //           funcionario: funcs
+  //       });
+  //   });
 });
 
 //findById

@@ -1,5 +1,5 @@
-var moongoose = require('mongoose');
-var Schema = moongoose.Schema;
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
 var funcionarioSchema = new Schema({
     nome: { type: String, required: true },
@@ -19,9 +19,9 @@ var funcionarioSchema = new Schema({
     estado: String,
     dtAdmissao: String,
     cargo: {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "Cargo",
       },
 });
 
-module.exports = moongoose.model('Funcionário', funcionarioSchema);
+module.exports = mongoose.model('Funcionário', funcionarioSchema);

@@ -18,12 +18,13 @@ var port = process.env.port || 3000;
 //ROTAS
 //var indexRoute = require("./src/routes/index-routes");
 var funcionarioRoute = require("./routes/funcionario-routes");
+var cargoRoute = require("./routes/cargo-routes");
 
 //Vincular a aplicacao (app) com o motor de rotas
 //app.use('/api', indexRoute);
 //Rotas para funcionarios
 app.use('/api/funcionarios', funcionarioRoute);
-
+app.use('/api/cargo', cargoRoute);
 app.listen(port, () => {
     console.log('Server up and running!');
 

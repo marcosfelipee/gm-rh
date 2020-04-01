@@ -31,27 +31,17 @@ router.post("/", function (req, res) {
 
 });
 
-router.get("/", async function(req, res) {
-  const funcionarios = await Funcionario.find().populate('cargos');
+router.get("/", function (req, res) {
+    Funcionario.find(function (err, funcs) {
+        if (err)
+            res.send(err);
 
-  for (let funcionario of funcionarios) {
-    if (funcionario.cargo) {
-      const id = funcionario.cargo;
-      funcionario.cargo = await Cargo.findById(id);
-    }
-  }
+        res.status(200).json({
+            message: 'Funcionários retornados',
+            funcionario: funcs
+        });
+    }).populate('cargo');
 
-  res.json({ funcionarios });
-  
-  // const response = await Funcionario.find(function (err, funcs) {
-  //       if (err)
-  //           res.send(err);
-
-  //       res.status(200).json({
-  //           message: 'Funcionários retornados',
-  //           funcionario: funcs
-  //       });
-  //   });
 });
 
 //findById

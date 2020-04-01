@@ -8,9 +8,5 @@ module.exports = model(
     salario: Number,
     descricao: String,
     codigoCBO: String,
-    funcionario: {
-      type: Schema.Types.ObjectId,
-      ref: "Funcionario",
-    },
   })
 );

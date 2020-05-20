@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 const funcionarioRoutes = require("./routes/funcionario-routes");
 const cargoRoutes = require('./routes/cargo-routes');
 const cargoFuncionariosRoutes = require('./routes/cargo-funcionario-routes');
+const avaliacaoRoutes = require("./routes/avaliacao-routes");
 
 // PERSISTÊNCIA
 mongoose.connect('mongodb+srv://marcos:bolseiro@cluster0-qtxkw.mongodb.net/test?retryWrites=true&w=majority', {
@@ -25,6 +26,7 @@ var port = process.env.port || 3000;
 app.use('/api/funcionarios', funcionarioRoutes);
 app.use('/api/cargos', cargoRoutes);
 app.use('/api/cargos-funcionarios', cargoFuncionariosRoutes);
+app.use('/api/avaliacao', avaliacaoRoutes)
 
 app.listen(port, () => {
     console.log('Server up and running!');

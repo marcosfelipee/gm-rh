@@ -21,7 +21,8 @@ var funcionarioSchema = new Schema({
     cargo: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Cargo",
-      },
+    },
+    user_id: String,
 });
 
 module.exports = mongoose.model('Funcionário', funcionarioSchema);

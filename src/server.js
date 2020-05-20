@@ -8,10 +8,14 @@ const cors = require('cors');
 const funcionarioRoutes = require("./routes/funcionario-routes");
 const cargoRoutes = require('./routes/cargo-routes');
 const cargoFuncionariosRoutes = require('./routes/cargo-funcionario-routes');
+<<<<<<< HEAD
 const authRoutes = require('./routes/auth-routes');
 const userRoutes = require('./routes/user-routes');
 
 const { DB_USER, DB_PASSWORD } = process.env;
+=======
+const avaliacaoRoutes = require("./routes/avaliacao-routes");
+>>>>>>> b721a894bb04e7d7c6843c063c364c13b1b62e62
 
 // PERSISTÊNCIA
 mongoose.connect(
@@ -35,6 +39,7 @@ app.use('/api/cargos', cargoRoutes);
 app.use('/api/cargos-funcionarios', cargoFuncionariosRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/avaliacao', avaliacaoRoutes);
 
 app.listen(port, () => {
     console.log('Server up and running!');

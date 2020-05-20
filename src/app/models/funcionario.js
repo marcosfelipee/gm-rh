@@ -12,12 +12,11 @@ var funcionarioSchema = new Schema({
     rg: String,
     cpf: String, 
     telCelular: String,
-    cep: String, 
-    logradouro: String,
-    bairro: String,
-    cidade: String,
-    estado: String,
     dtAdmissao: String,
+    endereco: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Endereço",
+    },
     cargo: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Cargo",

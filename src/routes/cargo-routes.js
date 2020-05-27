@@ -1,42 +1,18 @@
-const { Router } = require("express");
-const Cargo = require("../app/models/cargo");
+const express = require('express')
+var router = express.Router(); //interceptação das rotas
+const cargoController = require('../controllers/cargo-controller');
 
-const route = Router();
+//POST
+router.post("/", cargoController.post);
 
-route.get("/", async (req, res) => {
-  try {
-    const cargos = await Cargo.find().populate('Funcionários');
+//GET ALL
+router.get("/", cargoController.getAll);
 
-    return res.status(200).json({ cargos })
-  } catch(err) {
-    return res.status(500).json({ 
-      message: "erro ao buscar cargos",
-    });
-  }
-});
+//GET BY ID
+router.get("/:cargoId", cargoController.getById);
 
-route.post("/", async (req, res) => {
-  const cargoModel = new Cargo();
+router.put("/:cargoId", cargoController.put);
 
-  try {
-    const { cargo, descricao, salario, setor, codigoCBO } = req.body;
+router.delete("/:cargoId", cargoController.delete);
 
-    cargoModel.cargo = cargo;
-    cargoModel.descricao = descricao;
-    cargoModel.salario = salario;
-    cargoModel.setor = setor;
-    cargoModel.codigoCBO = codigoCBO;
-
-    await cargoModel.save();
-
-    res.status(201).json({
-      message: 'Cargo criado com sucesso!'
-    })
-  } catch(err) {
-    return res.status(500).json({ 
-      message: "erro ao criar cargo",
-    })
-  }
-});
-
-module.exports = route;
+module.exports = router;

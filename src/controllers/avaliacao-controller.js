@@ -7,6 +7,7 @@ exports.post = async (req, res) => {
         await repository.post({
             descricao: req.body.descricao,
             nota: req.body.nota,
+            funcionario: req.body.funcionario
         });
         res.status(201).send({
             message: "Avaliação inserida com sucesso"
@@ -68,6 +69,7 @@ exports.put = async (req, res) => {
         });
     }
 }
+
 
 
 //DELETE - controller

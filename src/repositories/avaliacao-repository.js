@@ -21,10 +21,11 @@ exports.put = async(id, data) =>{
         $set:{
             descricao: data.descricao,
             nota: data.nota,
+            funcionario: data.funcionario
         }
     });
 }
 
 exports.delete = async(id) =>{
-    await Avaliacao.findOneAndRemove(id);
+    await Avaliacao.findByIdAndDelete(id);
 }

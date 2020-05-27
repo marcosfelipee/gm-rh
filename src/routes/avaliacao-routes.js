@@ -9,10 +9,10 @@ router.post("/", avaliacaoController.post);
 router.get("/", avaliacaoController.getAll);
 
 //GET BY ID
-router.get("/:userId", avaliacaoController.getById);
+router.get("/:avaliacaoId", avaliacaoController.getById);
 
-router.put("/:userId", avaliacaoController.put);
+router.put("/:avaliacaoId", avaliacaoController.put);
 
-router.delete("/:userId", avaliacaoController.delete);
+router.delete("/:avaliacaoId", avaliacaoController.delete);
 
 module.exports = router;

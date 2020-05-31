@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var funcionarioSchema = new Schema({
-    nome: { type: String, required: true },
+    nome: String,
     sobrenome: String,
     dtNasc: String,
     sexo: {
@@ -20,8 +20,7 @@ var funcionarioSchema = new Schema({
     cargo: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Cargo",
-    },
-    user_id: String,
+    }
 });
 
 module.exports = mongoose.model('Funcionário', funcionarioSchema);

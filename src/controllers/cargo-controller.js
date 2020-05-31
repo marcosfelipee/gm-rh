@@ -59,7 +59,6 @@ exports.put = async (req, res) => {
     try {
         const id = req.params.cargoId;    
         const data = await repository.put(id, req.body);
-        console.log(data);
         res.status(200).send({
             message:"Cargo atualizado com sucesso",
             dados: data

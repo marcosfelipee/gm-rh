@@ -2,13 +2,11 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var enderecoSchema = new Schema({
-    id_endereco: Number,
-    rua: String,
+    logradouro: String,
+    numero: Number,
     cidade: String,
     estado: String,
     cep: String,
-    rua: String
-
 });
 
 module.exports = mongoose.model('Endereço', enderecoSchema);

@@ -1,4 +1,4 @@
-const repository = require('../repositories/user-repository');
+const repository = require('../repositories/user-repository')
 
 exports.post = async (req, res) => {
   const {name, email, password} = req.body

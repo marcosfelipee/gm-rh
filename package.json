@@ -1,11 +1,13 @@
 {
-  "name": "projeto-rh",
+  "name": "projeto-gm-rh",
   "version": "1.0.0",
   "description": "Sistema de Apoio a Decisão na área de Recursos Humanos",
-  "main": "server.js",
+  "main": "src/server.js",
   "scripts": {
     "dev": "nodemon src/server.js",
-    "start": "node src/server.js"
+    "start": "node src/server.js",
+    "lint": "eslint ./src --fix",
+    "lint:watch": "esw --quiet -w"
   },
   "repository": {
     "type": "git",
@@ -26,9 +28,14 @@
     "body-parser": "1.19.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
+    "eslint-watch": "^6.0.1",
     "express": "4.17.1",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.9.4",
-    "nodemon": "^2.0.2"
+    "mongoose": "^5.9.4"  
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "nodemon": "2.0.2",
+    "prettier": "^2.0.2"
   }
 }

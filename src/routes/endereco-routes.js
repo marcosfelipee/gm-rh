@@ -1,18 +1,18 @@
 const express = require('express')
-var router = express.Router(); //interceptação das rotas
-const enderecoController = require('../controllers/endereco-controller');
+var router = express.Router() //interceptação das rotas
+const enderecoController = require('../controllers/endereco-controller')
 
 //POST
-router.post("/", enderecoController.post);
+router.post('/', enderecoController.post)
 
 //GET ALL
-router.get("/", enderecoController.getAll);
+router.get('/', enderecoController.getAll)
 
 //GET BY ID
-router.get("/:enderecoId", enderecoController.getById);
+router.get('/:enderecoId', enderecoController.getById)
 
-router.put("/:enderecoId", enderecoController.put);
+router.put('/:enderecoId', enderecoController.put)
 
-router.delete("/:enderecoId", enderecoController.delete);
+router.delete('/:enderecoId', enderecoController.delete)
 
-module.exports = router;
+module.exports = router

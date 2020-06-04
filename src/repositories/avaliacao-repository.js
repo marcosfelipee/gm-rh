@@ -1,13 +1,11 @@
 const Avaliacao = require('../app/models/Avaliacao')
 
 exports.get = async () => {
-  const res = await Avaliacao.find()
-  return res
+  return Avaliacao.find().populate('funcionario')
 }
 
 exports.getById = async (id) => {
-  const res = await Avaliacao.findById(id)
-  return res
+  return Avaliacao.findById(id).populate('funcionario')
 }
 
 exports.post = async(data) =>{

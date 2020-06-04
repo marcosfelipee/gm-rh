@@ -1,7 +1,6 @@
-var mongoose = require('mongoose')
-var Schema = mongoose.Schema
+const {model, Schema} = require('mongoose')
 
-var funcionarioSchema = new Schema({
+const funcionarioSchema = new Schema({
   nome: String,
   sobrenome: String,
   dtNasc: String,
@@ -14,13 +13,13 @@ var funcionarioSchema = new Schema({
   telCelular: String,
   dtAdmissao: String,
   endereco: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: 'Endereço',
   },
   cargo: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: 'Cargo',
-  }
+  },
 })
 
-module.exports = mongoose.model('Funcionário', funcionarioSchema)
+module.exports = model('Funcionário', funcionarioSchema)

@@ -16,16 +16,16 @@ exports.post = async (req, res) => {
       message: 'Falha ao inserir uma avaliação',
       erro: error
     })
-
   }
-
 }
 
 exports.getAll = async (req, res) => {
   try {
     var data = await repository.get()
+
     res.status(200).send(data)
   } catch (error) {
+    console.log(error)
     res.status(500).send({
       message: 'Falha na requisição',
       erro: error

@@ -1,21 +1,22 @@
-const express = require ('express')
+const app = require('express')()
 const bodyParser = require('body-parser')
-const app = express()
+// const app = express()
 const mongoose = require('mongoose')
 const cors = require('cors')
 
 // Importando rotas da aplicação
-const funcionarioRoutes = require('./routes/funcionario-routes')
-const cargoRoutes = require('./routes/cargo-routes')
-const cargoFuncionariosRoutes = require('./routes/cargo-funcionario-routes')
-const authRoutes = require('./routes/auth-routes')
-const userRoutes = require('./routes/user-routes')
-const avaliacaoRoutes = require('./routes/avaliacao-routes')
-const enderecoRoutes = require('./routes/endereco-routes')
+const funcionarioRoutes = require('./routes/funcionario')
+const cargoRoutes = require('./routes/cargo')
+const cargoFuncionariosRoutes = require('./routes/cargo-funcionario')
+const authRoutes = require('./routes/auth')
+const userRoutes = require('./routes/user')
+const avaliacaoRoutes = require('./routes/avaliacao')
+const enderecoRoutes = require('./routes/endereco')
 
 const authService = require('./services/auth')
 
 const {DB_USER, DB_PASSWORD} = process.env
+
 // PERSISTÊNCIA
 mongoose.connect(
   `mongodb+srv://${DB_USER}:${DB_PASSWORD}` +
@@ -34,9 +35,10 @@ var port = process.env.port || 8000
 
 // Rotas da aplicação
 app.use('/api/auth', authRoutes)
-app.use('/api/funcionario',authService.authorize, funcionarioRoutes)
+
+// Rotas que necessitam de autenticação
+app.use('/api/funcionarios',authService.authorize, funcionarioRoutes)
 app.use('/api/cargos',authService.authorize, cargoRoutes)
-app.use('/api/cargos-funcionarios', authService.authorize, cargoFuncionariosRoutes)
 app.use('/api/users', authService.authorize, userRoutes)
 app.use('/api/avaliacao', authService.authorize, avaliacaoRoutes)
 app.use('/api/endereco', authService.authorize, enderecoRoutes)

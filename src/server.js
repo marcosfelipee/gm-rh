@@ -1,13 +1,11 @@
 const app = require('express')()
 const bodyParser = require('body-parser')
-// const app = express()
 const mongoose = require('mongoose')
 const cors = require('cors')
 
 // Importando rotas da aplicação
 const funcionarioRoutes = require('./routes/funcionario')
 const cargoRoutes = require('./routes/cargo')
-const cargoFuncionariosRoutes = require('./routes/cargo-funcionario')
 const authRoutes = require('./routes/auth')
 const userRoutes = require('./routes/user')
 const avaliacaoRoutes = require('./routes/avaliacao')
